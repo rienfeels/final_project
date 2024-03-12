@@ -1,13 +1,19 @@
 # fsc_app/serializers.py
 from rest_framework import serializers
-from .models import StripingForm, UserProfile  # Update the import to include UserProfile
+from django.contrib.auth.models import User
+from .models import DailyReport, UserProfile
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
 
 class StripingFormSerializer(serializers.ModelSerializer):
     class Meta:
-        model = StripingForm  # Update to use the correct model
+        model = DailyReport
         fields = '__all__'
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserProfile  # Use the correct model name
+        model = UserProfile
         fields = '__all__'

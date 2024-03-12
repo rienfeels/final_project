@@ -19,7 +19,9 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from fsc_app.views import MyModelViewSet  # Import the viewset from your app
+from fsc_app.views import MyModelViewSet, UserRegistrationView  # Import the viewset from your app
+
+from django.contrib.auth.views import LoginView  # Import the LoginView class
 
 router = DefaultRouter()
 router.register(r'forms', MyModelViewSet, basename='stripingform')
@@ -28,4 +30,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),  # Include the auth app's urls
     path('api/', include(router.urls)),  # Include the app's viewset directly
+    path('register/', UserRegistrationView.as_view(), name='user-registration'),  # Add the registration view
+    path('login/', LoginView.as_view(), name='user-login'),
 ]

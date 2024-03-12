@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-9)06v58skx*h7ip@mijv=*0t_86yf&_8@l7yv6x8b-p^nd#77w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -39,12 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'fsc_app',
+    'corsheaders',
 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -105,6 +107,25 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Add your React development server URL
+    
+    # Add other allowed origins as needed
+
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+LOGIN_REDIRECT_URL = '/dashboard/'  # Replace with your desired URL
+LOGOUT_REDIRECT_URL = '/login/'  # Replace with your desired URL
 
 
 
