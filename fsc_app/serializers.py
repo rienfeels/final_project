@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
-class StripingFormSerializer(serializers.ModelSerializer):
+class DailyReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = DailyReport
         fields = '__all__'
